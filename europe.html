@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欧洲国家配对游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-flag"></i> 欧洲国家配对游戏</h1>
+            <p class="subtitle">配对国家中文名与英文名，点亮欧洲地图</p>
+        </header>
+
+        <main class="game-main">
+            <div class="game-controls">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">已配对</span>
+                        <span id="matchedCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">剩余</span>
+                        <span id="remainingCount" class="stat-value">45</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">时间</span>
+                        <span id="timer" class="stat-value">00:00</span>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="startGameBtn" class="control-btn start-btn">
+                        <i class="fas fa-play"></i> 开始游戏
+                    </button>
+                    <button id="newGameBtn" class="control-btn" disabled>
+                        <i class="fas fa-redo"></i> 新游戏
+                    </button>
+                    <button id="hintBtn" class="control-btn" disabled>
+                        <i class="fas fa-lightbulb"></i> 提示
+                    </button>
+                    <button id="rulesBtn" class="control-btn rules-btn">
+                        <i class="fas fa-question-circle"></i> 游戏规则
+                    </button>
+                    <a href="index.html" class="control-btn back-btn">
+                        <i class="fas fa-home"></i> 返回首页
+                    </a>
+                </div>
+            </div>
+
+            <div id="rulesPanel" class="instructions rules-panel hidden">
+                <div class="rules-content">
+                    <h3><i class="fas fa-gamepad"></i> 游戏规则</h3>
+                    <ul>
+                        <li>点击一个中文国家名称，再点击一个英文国家名称进行配对</li>
+                        <li>配对成功：词条消失，地图上对应国家点亮为该国旗主色调</li>
+                        <li>配对失败：词条恢复可点击状态</li>
+                        <li>每轮显示10个中文和10个英文名称，确保至少有一对可匹配</li>
+                        <li>配对成功后，系统会自动补充新的词条，保持10对词条</li>
+                        <li>目标：点亮地图上所有45个欧洲国家</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <div class="words-section">
+                    <div class="words-column">
+                        <h3><i class="fas fa-language"></i> 中文名称</h3>
+                        <div id="chineseWords" class="words-container">
+                            <!-- 中文词条将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <div class="words-column">
+                        <h3><i class="fas fa-font"></i> 英文名称</h3>
+                        <div id="englishWords" class="words-container">
+                            <!-- 英文词条将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-section">
+                    <h3><i class="fas fa-map"></i> 欧洲地图</h3>
+                    <div class="map-container">
+                        <!-- SVG欧洲地图将在这里插入 -->
+                        <div id="europeMap">
+                            <p>地图加载中...</p>
+                        </div>
+                        <div class="map-legend">
+                            <div class="legend-item">
+                                <div class="color-box" style="background-color: #3498db;"></div>
+                                <span>已点亮国家</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-box" style="background-color: #ecf0f1;"></div>
+                                <span>未点亮国家</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </main>
+
+        <footer>
+            <p>地理配对互动游戏 &copy; 2025 - 欧洲国家配对</p>
+        </footer>
+    </div>
+
+    <!-- 提示模态框 -->
+    <div id="hintModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeHintModal()">&times;</span>
+            <h2><i class="fas fa-lightbulb"></i> 游戏提示</h2>
+            <p id="hintMessage">点击"提示"按钮可以查看当前可匹配的国家对。</p>
+            <div id="hintList"></div>
+            <button class="modal-btn" onclick="closeHintModal()">关闭</button>
+        </div>
+    </div>
+
+    <!-- 游戏完成模态框 -->
+    <div id="completionModal" class="modal">
+        <div class="modal-content">
+            <h2><i class="fas fa-trophy"></i> 恭喜！</h2>
+            <p>你已成功配对所有45个欧洲国家！</p>
+            <p>用时：<span id="completionTime">00:00</span></p>
+            <button class="modal-btn" onclick="closeCompletionModal()">再来一局</button>
+        </div>
+    </div>
+
+    <script src="data/countries.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

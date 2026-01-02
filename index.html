@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地理配对互动游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-globe-europe"></i> 地理配对游戏</h1>
+            <p class="subtitle">通过配对国家中文名与英文名，学习欧洲地理知识</p>
+        </header>
+
+        <main class="home-main">
+            <div class="intro-section">
+                <h2>选择一个大洲开始游戏</h2>
+                <p>目前仅开放欧洲板块，亚洲和非洲板块正在开发中...</p>
+            </div>
+
+            <div class="continents-grid">
+                <!-- 亚洲板块 -->
+                <div class="continent-card" id="asia-card">
+                    <div class="continent-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>亚洲</h3>
+                    <p>探索亚洲48个国家</p>
+                    <button class="continent-btn" onclick="showComingSoon('亚洲')">
+                        进入亚洲板块
+                    </button>
+                </div>
+
+                <!-- 欧洲板块 -->
+                <div class="continent-card" id="europe-card">
+                    <div class="continent-icon">
+                        <i class="fas fa-globe-europe"></i>
+                    </div>
+                    <h3>欧洲</h3>
+                    <p>探索欧洲45个国家</p>
+                    <a href="europe.html" class="continent-btn active">
+                        进入欧洲板块
+                    </a>
+                </div>
+
+                <!-- 非洲板块 -->
+                <div class="continent-card" id="africa-card">
+                    <div class="continent-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>非洲</h3>
+                    <p>探索非洲54个国家</p>
+                    <button class="continent-btn" onclick="showComingSoon('非洲')">
+                        进入非洲板块
+                    </button>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> 游戏说明</h3>
+                <ul>
+                    <li>点击欧洲板块进入配对游戏页面</li>
+                    <li>游戏规则：配对国家的中文名称与英文名称</li>
+                    <li>每轮随机显示10个国家，配对成功后会从地图上点亮该国</li>
+                    <li>配对成功的国家会显示其国旗主色调</li>
+                    <li>亚洲和非洲板块暂未开放，敬请期待</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>地理配对互动游戏 &copy; 2025 - 学习欧洲地理知识的好帮手</p>
+        </footer>
+    </div>
+
+    <!-- 暂未开通提示模态框 -->
+    <div id="comingSoonModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2><i class="fas fa-tools"></i> 功能开发中</h2>
+            <p id="modalMessage"></p>
+            <p>该功能正在积极开发中，敬请期待！</p>
+            <button class="modal-btn" onclick="closeModal()">确定</button>
+        </div>
+    </div>
+
+    <script src="js/home.js"></script>
+</body>
+</html>
